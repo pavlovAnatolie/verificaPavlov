@@ -1,11 +1,10 @@
 <?php
 
-class DispositivoAllarme extends Impianto{
+class DispositivoAllarme implements JsonSerializable{
     private $id;
     private $tel;
 
-    function __construct($nome, $log, $lat,$id,$tel){
-        parent::__construct($nome, $log, $lat);
+    function __construct($id,$tel){
         $this->id = $id;
         $this->tel = $tel;
     }
@@ -18,16 +17,8 @@ class DispositivoAllarme extends Impianto{
         return $this->tel;
     }
 
-
-    /*function toString(){
-        return $this->cognome ." ".$this->nome." ". $this->eta;
-    }
-
     function jsonSerialize(){
-        return ["nome"=>$this->nome,
-                "cognome"=>$this->cognome,
-                "eta"=>$this->eta];
+        return ["id"=>$this->id];
     }
-*/
 
 }

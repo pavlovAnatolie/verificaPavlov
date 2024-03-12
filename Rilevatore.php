@@ -1,12 +1,18 @@
 <?php
 
-class Rilevatore extends Impianto{
+class Rilevatore{
         private $id;
         private $misurazioni;
+        private $unitaDiMisura;
+        private $codiceSeriale;
+        private $sogliaDiAllarme;
 
-    function __construct($nome, $log, $lat,$id){
-        parent::__construct($nome, $log, $lat);
+    function __construct($id,$unitaDiMisura,$codiceSeriale, $sogliaDiAllarme){
         $this->id = $id;
+        $this->unitaDiMisura = $unitaDiMisura;
+        $this->codiceSeriale = $codiceSeriale;
+        $this->sogliaDiAllarme = $sogliaDiAllarme;
+
         $this->misurazioni =array();
     }
 
@@ -21,4 +27,17 @@ class Rilevatore extends Impianto{
     function getMisurazioni(){
         return $this->misurazioni;
     }
+
+    function getUnitaDiMisura(){
+        return $this->unitaDiMisura;
+    }
+
+    function getCodiceSeriale(){
+        return $this->codiceSeriale;
+    }
+
+    function getSogliaDiAllarme(){
+        return $this->sogliaDiAllarme;
+    }
+
 }

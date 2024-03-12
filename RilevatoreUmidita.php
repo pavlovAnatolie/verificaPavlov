@@ -1,23 +1,14 @@
 <?php
 
-class RilevatoreUmidita extends Rilevatore{
-        private $unitaDiMisura;
-        private $codiceSeriale;
-        private $sogliaDiAllarme;
+class RilevatoreUmidita extends Rilevatore implements JsonSerializable{
+        private $posizione;
 
-    function __construct($nome, $log, $lat,$id,$codiceSeriale,$sogliaDiAllarme){
-        parent::__construct($nome, $log, $lat,$id);
-        $this->unitaDiMisura = "%";
-        $this->codiceSeriale = $codiceSeriale;
-        $this->sogliaDiAllarme = $sogliaDiAllarme;
-    }
+        function __construct($id,$codiceSeriale,$sogliaDiAllarme,$posizione){
+            parent::__construct($id,"%",$codiceSeriale,$sogliaDiAllarme);
+            $this->posizione = $posizione;
+        }
 
-
-    function getcodiceSeriale(){
-        return $this->codiceSeriale;
-    }
-
-    function getSogliaDiAllarme(){
-        return $this->sogliaDiAllarme;
+    function jsonSerialize(){
+        return ["id"=>parent::getId(),"unitaDiMisura"=>parent::getUnitaDiMisura(),"codiceSeriale"=>parent::getCodiceSeriale(),"sogliaDiAllarme"=>parent::getSogliaDiAllarme(),"posizone"=>$this->posizione];
     }
 }
