@@ -8,6 +8,11 @@ class RilevatoreUmidita extends Rilevatore implements JsonSerializable{
             $this->posizione = $posizione;
         }
 
+        function addMisurazioni($misura,$data){
+            $this->misurazioni["$data"] = $misura;
+        }
+    
+
     function jsonSerialize(){
         return ["id"=>parent::getId(),"unitaDiMisura"=>parent::getUnitaDiMisura(),"codiceSeriale"=>parent::getCodiceSeriale(),"sogliaDiAllarme"=>parent::getSogliaDiAllarme(),"posizone"=>$this->posizione];
     }

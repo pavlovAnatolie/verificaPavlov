@@ -4,7 +4,9 @@ class Impianto implements JsonSerializable{
     private $nome;
     private $log;
     private $lat;
-    private $rilevaotri;
+    private $rilevatoriPressione;
+    private $rilevatoriUmidita;
+
     private $Allarme;
 
     function __construct($nome, $log, $lat){
@@ -29,8 +31,12 @@ class Impianto implements JsonSerializable{
         return $this->lat;
     }
 
-    function addRilevatore($rilevaotre){
-        array_push($this->rilevaotri, $rilevaotre);
+    function addRilevatorePressione($rilevatore){
+        array_push($this->rilevatoriPressione, $rilevatore);
+    }
+
+    function addRilevatoreUmidita($rilevatore){
+        array_push($this->rilevatoriUmidita, $rilevatore);
     }
 
     function addAllarme($allarme){
@@ -41,9 +47,14 @@ class Impianto implements JsonSerializable{
         return $this->Allarme;
     }
 
-    function getRilevatori(){
-        return $this->rilevaotri;
+    function getRilevatoriPressione(){
+        return $this->rilevatoriPressione;
     }
+
+    function getRilevatoriUmidita(){
+        return $this->rilevatoriUmidita;
+    }
+
 
     function jsonSerialize(){
         return ["nome"=>$this->nome,

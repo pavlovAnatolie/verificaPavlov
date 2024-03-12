@@ -13,6 +13,10 @@ include_once "DispositivoAllarme.php";
         $b = new DispositivoAllarme(30,111);
         $imp->addAllarme($a);
         $imp->addAllarme($b);
+        $s=array();
+        $count = 0;
+   
+        
         $response->getBody()->write(json_encode($imp->getAllarme()));
         return $response;
     }
@@ -25,12 +29,11 @@ include_once "DispositivoAllarme.php";
         $imp->addAllarme($b);
 
         foreach ($imp->getAllarme() as $value) {
-           if($value->getId == $args["id"]){
-            $response->getBody()->write(json_encode($imp->getAllarme()));
+           if($value->getId() == intval($args["id"])){
+            $response->getBody()->write(json_encode($value));
             return $response;
            }
         }
-
         $response->getBody()->write("dispositivo non presente");
             return $response;
         

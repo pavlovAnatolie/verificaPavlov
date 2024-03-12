@@ -18,7 +18,7 @@ class DispositivoAllarme implements JsonSerializable{
     }
 
     function jsonSerialize(){
-        return ["id"=>$this->id];
+        return ["id"=>$this->id,"telefono"=>$this->tel];
     }
 
 }

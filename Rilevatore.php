@@ -1,6 +1,6 @@
 <?php
 
-class Rilevatore{
+class Rilevatore implements JsonSerializable{
         private $id;
         private $misurazioni;
         private $unitaDiMisura;
@@ -38,6 +38,10 @@ class Rilevatore{
 
     function getSogliaDiAllarme(){
         return $this->sogliaDiAllarme;
+    }
+
+    function jsonSerialize(){
+        return ["id"=>$this->id,"unitaDiMisura"=>$this->unitaDiMisura,"codiceSeriale"=>$this->codiceSeriale,"sogliaDiAllarme"=>$this->sogliaDiAllarme,"misurazioni"=> $this->misurazioni];
     }
 
 }
